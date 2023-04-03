@@ -1,4 +1,3 @@
-import React from 'react';
 import { TiWeatherCloudy } from 'react-icons/ti';
 
 const error404 = () => {

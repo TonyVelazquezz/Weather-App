@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Sunny from '../assets/Sunny.mp4';
 import WeatherIconsBox from '../components/WeatherIconsBox';
@@ -8,14 +8,12 @@ import useFetch from '../hooks/useFetch';
 
 const WeatherPage = () => {
 	const { name } = useParams();
-	//CustomHooks
 	const KEY = import.meta.env.VITE_API_KEY;
 	const { data, loader, handleFetchData } = useFetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${KEY}&units=metric`
 	);
 
 	const { icon } = useWeatherIcons(data?.weather[0].id);
-	//Fetch the data one time
 	useEffect(() => {
 		handleFetchData();
 	}, []);
@@ -38,16 +36,12 @@ const WeatherPage = () => {
 					</div>
 				) : (
 					<div className="glass flex flex-col items-center justify-center py-5 px-10 rounded-md shadow-md text-shadow text-white sm:w-1/2 w-11/12">
-						<h2 className="pb-2 sm:text-4xl text-3xl text-center text_shadow">
-							{name}
-						</h2>
+						<h2 className="pb-2 sm:text-4xl text-3xl text-center text_shadow">{name}</h2>
 
 						<WeatherIconsBox icon={icon} temp={data?.main.temp} />
 
 						<div className="pt-3 text-center w-full text_shadow">
-							<p className="text-5xl text-dark_blue text_shadow_white">
-								{parseInt(data?.main.temp)}°
-							</p>
+							<p className="text-5xl text-dark_blue text_shadow_white">{parseInt(data?.main.temp)}°</p>
 							<p className="text-2xl capitalize">{data?.weather[0].description}</p>
 							<p className="text-main_blue text-2xl">
 								Humidity-

@@ -17,20 +17,18 @@
 	px-2 py-1 rounded-full transition text-white;
 }
 .glass {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.25);
 	backdrop-filter: 4px;
 }
 .filter {
 	background-color: rgba(0, 0, 0, 0.3);
 }
 .text_shadow {
-	text-shadow: 1px 1px 0 #013893, 1px -1px 0 #013893, -1px 1px 0 #013893,
-		-1px -1px 0 #013893, 1px 0px 0 #013893, 0px 1px 0 #013893, -1px 0px 0 #013893,
-		0px -1px 0 #013893;
+	text-shadow: 1px 1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, -1px -1px 0 #000000,
+		1px 0px 0 #000000, 0px 1px 0 #000000, -1px 0px 0 #000000, 0px -1px 0 #000000;
 }
 
 .text_shadow_white {
-	text-shadow: 1px 1px 0 #dddddddd, 1px -1px 0 #dddddddd, -1px 1px 0 #dddddddd,
-		-1px -1px 0 #dddddddd, 1px 0px 0 #dddddddd, 0px 1px 0 #dddddddd,
-		-1px 0px 0 #dddddddd, 0px -1px 0 #dddddddd;
+	text-shadow: 1px 1px 0 #dddddddd, 1px -1px 0 #dddddddd, -1px 1px 0 #dddddddd, -1px -1px 0 #dddddddd,
+		1px 0px 0 #dddddddd, 0px 1px 0 #dddddddd, -1px 0px 0 #dddddddd, 0px -1px 0 #dddddddd;
 }
