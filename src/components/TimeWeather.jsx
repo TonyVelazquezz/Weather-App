@@ -28,8 +28,8 @@ const TimeWeather = () => {
 	}, [time]);
 
 	return (
-		<div className="flex items-center justify-center pt-7 text-white">
-			<div className="pt-10 rounded-md text-center text_shadow sm:w-1/2 w-11/12">
+		<div className="flex items-center justify-center pt-5 text-white">
+			<div className="rounded-md text-center text_shadow sm:w-1/2 w-11/12">
 				<p className="font-light text-main_blue pb-3 text-5xl sm:text-7xl">
 					{time}
 					<span className="pl-1 text-3xl">{meridian}</span>

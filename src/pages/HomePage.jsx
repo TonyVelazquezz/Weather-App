@@ -7,12 +7,12 @@ import useFetch from '../hooks/useFetch';
 import useForm from '../hooks/useForm';
 import BackgroundImage from '../components/backgroundImage';
 import useWeatherIcons from '../hooks/useWeatherIcons';
+import CitiesButtons from '../components/CitiesButtons';
 
 const HomePage = () => {
-	const [userInput, handleInputChange, reset] = useForm({ city: '' });
-	const { city } = userInput;
+	const { city, onInputChange, reset } = useForm({ city: '' });
 
-	const KEY = import.meta.env.VITE_API_KEY;
+	const KEY = import.meta.env.VITE_WEATHER_KEY;
 	const { data, loader, handleFetchData } = useFetch(
 		`https://api.openweathermap.org/data/2.5/weather?q=${
 			city === '' ? 'new york' : city
@@ -23,6 +23,7 @@ const HomePage = () => {
 
 	useEffect(() => {
 		handleFetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleWeatherData = e => {
@@ -34,25 +35,23 @@ const HomePage = () => {
 	};
 
 	return (
-		<div className="relative h-screen overflow-auto w-full">
+		<section className="min-h-screen relative">
 			<BackgroundImage icon={icon} />
 
-			<div className="absolute pt-10 z-20 w-full">
-				<FormWeather
-					city={city}
-					handleInputChange={handleInputChange}
-					handleWeatherData={handleWeatherData}
-				/>
+			<div className="py-5 relative">
+				<CitiesButtons />
+
+				<FormWeather city={city} onInputChange={onInputChange} handleWeatherData={handleWeatherData} />
 
 				{data?.cod !== 200 ? (
 					<>{data !== null && <ErrorMessage message={data?.message} error={data?.cod} />}</>
 				) : null}
 
-				<WeatherBox loader={loader} {...data} />
+				<WeatherBox loader={loader} {...data} icon={icon} />
 
 				<TimeWeather />
 			</div>
-		</div>
+		</section>
 	);
 };
 

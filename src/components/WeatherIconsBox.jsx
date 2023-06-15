@@ -8,9 +8,9 @@ import {
 	WiDayFog,
 } from 'react-icons/wi';
 
-const WeatherIcons = ({ icon }) => {
+const WeatherIconsBox = ({ icon }) => {
 	return (
-		<div className="bg-white flex items-center justify-center p-3 rounded-md shadow text-main_blue w-52 sm:w-60">
+		<div className="bg-white flex items-center justify-center pt-3 pb-3 rounded-md shadow text-main_blue w-52 sm:w-60">
 			{icon === 'WiThunderstorm' && <WiThunderstorm size={100} />}
 			{icon === 'WiSleet' && <WiSleet size={100} />}
 			{icon === 'WiRain' && <WiRain size={100} />}
@@ -22,4 +22,4 @@ const WeatherIcons = ({ icon }) => {
 	);
 };
 
-export default WeatherIcons;
+export default WeatherIconsBox;

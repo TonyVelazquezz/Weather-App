@@ -35,7 +35,7 @@ This is an application to find the weather of any city in the world, custom icon
    ```
 4. Create your `.env` archive and enter your API KEY as environment variable
    ```
-   VITE_API_KEY = ENTER YOUR API;
+   WEATHER_API_KEY = ENTER YOUR API;
    ```
 
 <!-- CONTRIBUTING -->

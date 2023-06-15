@@ -32,3 +32,9 @@
 	text-shadow: 1px 1px 0 #dddddddd, 1px -1px 0 #dddddddd, -1px 1px 0 #dddddddd, -1px -1px 0 #dddddddd,
 		1px 0px 0 #dddddddd, 0px 1px 0 #dddddddd, -1px 0px 0 #dddddddd, 0px -1px 0 #dddddddd;
 }
+
+.homePage_container {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+}
