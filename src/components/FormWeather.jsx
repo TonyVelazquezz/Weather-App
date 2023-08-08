@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { MdSearch } from 'react-icons/md';
 import BeatLoader from 'react-spinners/BeatLoader';
 
 const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
@@ -46,9 +47,10 @@ const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 			setCurrentIndex(prev => Math.max(prev - 1, 0));
 			setIsKeyPressed(true);
 		} else if (e.code === 'Enter') {
-			const newCity = currentResults[currentIndex];
-
-			onInputChange({ target: { name: 'city', value: newCity.name } });
+			const newCity = currentResults[currentIndex] ? currentResults[currentIndex].name : city;
+			onInputChange({ target: { name: 'city', value: newCity } });
+			setGeoData(prev => ({ ...prev, [newCity]: { results: [], loading: true } }));
+			setShowResults(false);
 		}
 	};
 
@@ -56,26 +58,27 @@ const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 	const loading = geoData[city]?.loading ?? false;
 
 	return (
-		<form
-			onSubmit={e => {
-				handleWeatherData(e);
-			}}
-			className=""
-		>
-			<div className="flex justify-center w-full">
-				<input
-					type="text"
-					placeholder="Search City..."
-					className="bg-white capitalize font-bold outline-none py-2 px-4 rounded-md shadow-md text-dark_blue md:w-5/12 w-8/12"
-					name="city"
-					value={city}
-					onChange={e => handleNewText(e)}
-					onFocus={() => setShowResults(true)}
-					onBlur={() => setTimeout(() => setShowResults(false), 100)}
-					onKeyDown={e => handleKeyPress(e)}
-				/>
+		<form onSubmit={handleWeatherData}>
+			<div className="flex justify-center w-full px-5">
+				<div className="flex w-full sm:w-1/2">
+					<input
+						type="text"
+						placeholder="Search City..."
+						className="bg-white capitalize font-bold outline-none py-2 px-4 rounded-l-md shadow-md text-dark_blue w-full"
+						name="city"
+						value={city}
+						onChange={handleNewText}
+						onFocus={() => setShowResults(true)}
+						onBlur={() => setTimeout(() => setShowResults(false), 100)}
+						onKeyDown={handleKeyPress}
+					/>
 
-				<div className="flex flex-row md:w-1/12 w-3/12 items-center justify center md:pl-5 pl-2">
+					<button type="submit" className="btn_submit">
+						<MdSearch size={25} className="text-white" />
+					</button>
+				</div>
+
+				{/* <div className="flex flex-row md:w-1/12 w-3/12 items-center justify center md:pl-5 pl-2">
 					<button name="metric" className="text-xl text-white font-light text_shadow">
 						°C
 					</button>
@@ -83,15 +86,8 @@ const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 					<button name="imperial" className="text-xl text-white font-light text_shadow">
 						°F
 					</button>
-				</div>
+				</div> */}
 			</div>
-
-			{/* <button
-				type="submit"
-				className="absolute btn md:right-[25.5%] md:top-[10%] right-[5.5%] top-[10%]"
-			>
-				Search
-			</button> */}
 
 			{showResults && loading && (
 				<div className="flex justify-center w-full">

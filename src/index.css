@@ -12,6 +12,10 @@
 	@apply bg-main_blue duration-300 ease-in font-bold hover:bg-dark_blue 
 	px-2 py-1 rounded-md transition text-white;
 }
+.btn_submit {
+	@apply bg-main_blue duration-300 ease-in font-bold hover:bg-dark_blue 
+	px-2 py-2 rounded-r-md transition text-white;
+}
 .btn_oval {
 	@apply bg-main_blue duration-300 ease-in font-bold hover:bg-dark_blue 
 	px-2 py-1 rounded-full transition text-white;

@@ -1,24 +1,25 @@
 import React from 'react';
 import WeatherIconsBox from './WeatherIconsBox';
 
-import { WiThermometer } from 'react-icons/wi';
-import { RiContrastDrop2Line, RiArrowUpDownFill } from 'react-icons/ri';
+import { WiThermometer, WiBarometer } from 'react-icons/wi';
+import { RiContrastDrop2Line, RiArrowUpSFill, RiArrowDownSFill } from 'react-icons/ri';
+import { MdVisibility } from 'react-icons/md';
 
 const WeatherMainBox = ({ data, name, icon }) => {
 	return (
-		<div className="glass p-2 sm:p-5 rounded-md shadow-md text-shadow text-white w-full sm:w-3/4 lg: lg:w-1/2">
+		<div className="glass p-2 sm:p-5 rounded-md shadow-md text-shadow text-white w-full sm:w-3/4 lg:w-1/2">
 			<h2 className="pb-2 sm:text-4xl text-3xl text-center text_shadow w-full">{name}</h2>
 
 			<div className="flex justify-center">
 				<WeatherIconsBox icon={icon} temp={data?.main.temp} />
 			</div>
 
-			<div className="pt-3 text-center w-full text_shadow text-xl">
+			<div className="pt-3 text-center w-full text_shadow text-lg">
 				<p className="text-5xl text-dark_blue text_shadow_white">{parseInt(data?.main.temp)}°</p>
 				<p className="text-2xl capitalize">{data?.weather[0].description}</p>
 
-				<div className="flex justify-center flex-wrap">
-					<div className="pl-2 sm:pl-5">
+				<div className="flex sm:justify-center flex-wrap sm:flex-nowrap pt-4">
+					<div className="pl-10">
 						<div className="flex w-full items-center">
 							<div className="bg-white rounded-full mr-1 p-[0.1rem]">
 								<RiContrastDrop2Line size={20} className="text-main_blue" />
@@ -32,7 +33,7 @@ const WeatherMainBox = ({ data, name, icon }) => {
 
 						<div className="flex w-full items-center">
 							<div className="bg-white rounded-full mr-1 p-[0.1rem]">
-								<RiArrowUpDownFill size={20} className="text-main_blue" />
+								<WiBarometer size={20} className="text-main_blue" />
 							</div>
 
 							<p className="text-main_blue">
@@ -53,10 +54,10 @@ const WeatherMainBox = ({ data, name, icon }) => {
 						</div>
 					</div>
 
-					<div className="pl-2 sm:pl-5">
+					<div className="pl-10">
 						<div className="flex w-full items-center">
 							<div className="bg-white rounded-full mr-1 p-[0.1rem]">
-								<RiContrastDrop2Line size={20} className="text-main_blue" />
+								<RiArrowUpSFill size={20} className="text-main_blue" />
 							</div>
 
 							<p className="text-main_blue">
@@ -67,7 +68,7 @@ const WeatherMainBox = ({ data, name, icon }) => {
 
 						<div className="flex w-full items-center">
 							<div className="bg-white rounded-full mr-1 p-[0.1rem]">
-								<RiArrowUpDownFill size={20} className="text-main_blue" />
+								<RiArrowDownSFill size={20} className="text-main_blue" />
 							</div>
 
 							<p className="text-main_blue">
@@ -78,7 +79,7 @@ const WeatherMainBox = ({ data, name, icon }) => {
 
 						<div className="flex w-full items-center">
 							<div className="bg-white rounded-full mr-1 p-[0.1rem]">
-								<WiThermometer size={20} className="text-main_blue" />
+								<MdVisibility size={20} className="text-main_blue" />
 							</div>
 
 							<p className="text-main_blue whitespace-nowrap">

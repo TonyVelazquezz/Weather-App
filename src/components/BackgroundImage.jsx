@@ -9,11 +9,7 @@ const BackgroundImage = ({ icon }) => {
 	return (
 		<>
 			{icon === 'WiDaySunny' && (
-				<img
-					src={Sunny}
-					alt="background"
-					className="fixed object-cover bg-no-repeat  bg-fixed h-full w-full"
-				/>
+				<img src={Sunny} alt="background" className="fixed object-cover bg-fixed h-full w-full" />
 			)}
 			{icon === 'WiThunderstorm' && (
 				<img src={Storm} alt="background" className="fixed object-cover bg-fixed h-full w-full" />
@@ -28,10 +24,10 @@ const BackgroundImage = ({ icon }) => {
 				<img src={Winter} alt="background" className="fixed object-cover bg-fixed h-full w-full" />
 			)}
 			{icon === 'WiFog' && (
-				<img src={Foggy} alt="background" className="fixed object-cover bg-fixed h-full w-full" />
+				<img src={Foggy} alt="background" className=" fixed object-cover bg-fixed h-full w-full" />
 			)}
 			{icon === 'WiDayFog' && (
-				<img src={Cloudy} alt="background" className="fixed object-cover bg-fixed h-full w-full" />
+				<img src={Cloudy} alt="background" className=" fixed object-cover bg-fixed h-full w-full" />
 			)}
 		</>
 	);

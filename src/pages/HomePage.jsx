@@ -10,7 +10,7 @@ import useWeatherIcons from '../hooks/useWeatherIcons';
 import CitiesButtons from '../components/CitiesButtons';
 
 const HomePage = () => {
-	const { city, onInputChange, reset } = useForm({ city: '' });
+	const { city, onInputChange, onResetForm } = useForm({ city: '' });
 
 	const KEY = import.meta.env.VITE_WEATHER_KEY;
 	const { data, loader, handleFetchData } = useFetch(
@@ -28,10 +28,9 @@ const HomePage = () => {
 
 	const handleWeatherData = e => {
 		e.preventDefault();
-		if (city.trim().length > 0) {
-			handleFetchData();
-			reset();
-		}
+
+		handleFetchData();
+		onResetForm();
 	};
 
 	return (
