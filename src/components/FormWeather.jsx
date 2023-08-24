@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 import BeatLoader from 'react-spinners/BeatLoader';
 
-const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
+const FormWeather = ({ city, onInputChange, handleWeatherData, setUnit }) => {
 	const [geoData, setGeoData] = useState({});
 	const [showResults, setShowResults] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(-1);
@@ -59,12 +59,12 @@ const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 
 	return (
 		<form onSubmit={handleWeatherData}>
-			<div className="flex justify-center w-full px-5">
-				<div className="flex w-full sm:w-1/2">
+			<div className="flex flex-wrap justify-center w-full">
+				<div className="flex sm:w-1/2 w-11/12">
 					<input
 						type="text"
 						placeholder="Search City..."
-						className="bg-white capitalize font-bold outline-none py-2 px-4 rounded-l-md shadow-md text-dark_blue w-full"
+						className="bg-white capitalize font-bold outline-none py-2 px-4 rounded-tl-md shadow-md text-dark_blue w-full"
 						name="city"
 						value={city}
 						onChange={handleNewText}
@@ -76,30 +76,38 @@ const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 					<button type="submit" className="btn_submit">
 						<MdSearch size={25} className="text-white" />
 					</button>
+
+					<div className="flex items-center justify-center pl-2">
+						<button
+							onClick={() => setUnit('metric')}
+							name="metric"
+							className="text-xl text-white font-light text_shadow"
+						>
+							°C
+						</button>
+						<p className="font-light text-white text_shadow px-2">|</p>
+						<button
+							onClick={() => setUnit('imperial')}
+							name="imperial"
+							className="text-xl text-white font-light text_shadow"
+						>
+							°F
+						</button>
+					</div>
 				</div>
 
-				{/* <div className="flex flex-row md:w-1/12 w-3/12 items-center justify center md:pl-5 pl-2">
-					<button name="metric" className="text-xl text-white font-light text_shadow">
-						°C
-					</button>
-					<p className="font-light text-white text_shadow px-2">|</p>
-					<button name="imperial" className="text-xl text-white font-light text_shadow">
-						°F
-					</button>
-				</div> */}
+				{showResults && loading && (
+					<div className="flex justify-center w-full">
+						<ul className="absolute bg-white mt-[0.1rem] shadow-md sm:w-1/2 w-11/12 py-1 text-center rounded-b-md">
+							<BeatLoader color="#2B4D7D" />
+						</ul>
+					</div>
+				)}
 			</div>
-
-			{showResults && loading && (
-				<div className="flex justify-center w-full">
-					<ul className="bg-white mt-2 shadow-md md:w-1/2 w-11/12 px-2 py-1 text-center absolute">
-						<BeatLoader color="#2B4D7D" />
-					</ul>
-				</div>
-			)}
 
 			<div className="flex justify-center w-full">
 				{showResults && results.length > 0 && (
-					<ul className="bg-white mt-2 shadow-md md:w-1/2 w-11/12 absolute">
+					<ul className="absolute bg-white mt-[0.1rem] shadow-md sm:w-1/2 w-11/12 rounded-b-md">
 						{results.map((city, index) => (
 							<li
 								key={city.geo_id}
