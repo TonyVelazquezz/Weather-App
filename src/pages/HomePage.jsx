@@ -5,7 +5,7 @@ import TimeWeather from '../components/TimeWeather';
 import WeatherBox from '../components/WeatherBox';
 import useFetch from '../hooks/useFetch';
 import useForm from '../hooks/useForm';
-import BackgroundImage from '../components/backgroundImage';
+import BackgroundImage from '../components/BackgroundImage';
 import useWeatherIcons from '../hooks/useWeatherIcons';
 import CitiesButtons from '../components/CitiesButtons';
 

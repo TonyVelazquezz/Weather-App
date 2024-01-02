@@ -6,7 +6,7 @@ import useWeatherIcons from '../hooks/useWeatherIcons';
 
 import WeatherMainBox from '../components/WeatherMainBox';
 import Forecast from '../components/Forecast';
-import BackgroundImage from '../components/backgroundImage';
+import BackgroundImage from '../components/BackgroundImage';
 
 const WeatherPage = () => {
 	const [weatherData, setWeatherData] = useState(null);
