@@ -5,7 +5,7 @@ import Storm from '../assets/backgrounds/ThunderStorm.jpg';
 import Sunny from '../assets/backgrounds/Sunny.jpg';
 import Winter from '../assets/backgrounds/Winter.jpg';
 
-const BackgroundImage = ({ icon }) => {
+export const BackgroundImage = ({ icon }) => {
 	return (
 		<>
 			{icon === 'WiDaySunny' && (
@@ -32,5 +32,3 @@ const BackgroundImage = ({ icon }) => {
 		</>
 	);
 };
-
-export default BackgroundImage;
