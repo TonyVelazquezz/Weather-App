@@ -43,18 +43,13 @@ const HomePage = () => {
 			<div className="py-5 relative">
 				<CitiesButtons setQuery={setQuery} />
 
-				<FormWeather
-					city={city}
-					onInputChange={onInputChange}
-					handleWeatherData={handleWeatherData}
-					setUnit={setUnit}
-				/>
+				<FormWeather city={city} onInputChange={onInputChange} handleWeatherData={handleWeatherData} />
 
 				{data?.cod !== 200 ? (
 					<>{data !== null && <ErrorMessage message={data?.message} error={data?.cod} />}</>
 				) : null}
 
-				<WeatherBox loader={loader} {...data} icon={icon} unit={unit} />
+				<WeatherBox loader={loader} {...data} icon={icon} unit={unit} setUnit={setUnit} />
 
 				<TimeWeather />
 			</div>

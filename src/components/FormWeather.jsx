@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MdSearch } from 'react-icons/md';
 import BeatLoader from 'react-spinners/BeatLoader';
 
-const FormWeather = ({ city, onInputChange, handleWeatherData, setUnit }) => {
+const FormWeather = ({ city, onInputChange, handleWeatherData }) => {
 	const [geoData, setGeoData] = useState({});
 	const [showResults, setShowResults] = useState(false);
 	const [currentIndex, setCurrentIndex] = useState(-1);
@@ -76,24 +76,6 @@ const FormWeather = ({ city, onInputChange, handleWeatherData, setUnit }) => {
 					<button type="submit" className="btn_submit">
 						<MdSearch size={25} className="text-white" />
 					</button>
-
-					<div className="flex items-center justify-center pl-2">
-						<button
-							onClick={() => setUnit('metric')}
-							name="metric"
-							className="text-xl text-white font-light text_shadow"
-						>
-							°C
-						</button>
-						<p className="font-light text-white text_shadow px-2">|</p>
-						<button
-							onClick={() => setUnit('imperial')}
-							name="imperial"
-							className="text-xl text-white font-light text_shadow"
-						>
-							°F
-						</button>
-					</div>
 				</div>
 
 				{showResults && loading && (
@@ -107,7 +89,7 @@ const FormWeather = ({ city, onInputChange, handleWeatherData, setUnit }) => {
 
 			<div className="flex justify-center w-full">
 				{showResults && results.length > 0 && (
-					<ul className="absolute bg-white mt-[0.1rem] shadow-md sm:w-1/2 w-11/12 rounded-b-md">
+					<ul className=" bg-white mt-[0.1rem] shadow-md sm:w-1/2 w-10/12 rounded-b-md">
 						{results.map((city, index) => (
 							<li
 								key={city.geo_id}

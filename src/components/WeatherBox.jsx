@@ -24,6 +24,24 @@ const WeatherBox = ({ name, main, loader, weather, icon, sys, unit, setUnit }) =
 								<WeatherIconsBox icon={icon} temp={main?.temp} />
 							</div>
 
+							<div className="flex items-center justify-center pl-2 pt-4">
+								<button
+									onClick={() => setUnit('metric')}
+									name="metric"
+									className="text-xl text-white font-light text_shadow"
+								>
+									°C
+								</button>
+								<p className="font-light text-white text_shadow px-2">|</p>
+								<button
+									onClick={() => setUnit('imperial')}
+									name="imperial"
+									className="text-xl text-white font-light text_shadow"
+								>
+									°F
+								</button>
+							</div>
+
 							<h3 className="text-2xl text-white text_shadow capitalize">{weather?.[0].description}</h3>
 							<h3 className="text-2xl text_shadow_white">
 								{name}, {sys?.country}
